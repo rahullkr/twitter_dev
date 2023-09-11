@@ -9,6 +9,6 @@ app.listen(3000, async () => {
   await connect();
   console.log("mongodb connected");
   let ser = new service(); 
-  await ser.create({content: 'done with #ejs'})
-
+  await ser.create({content: 'this is #CAPITAL'});
+  
 });
