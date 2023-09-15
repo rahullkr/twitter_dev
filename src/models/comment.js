@@ -21,6 +21,12 @@ const commentSchena = new mongoose.Schema({
     required: true,
     refPath: "onModel",
   },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 
 }, {timestamps: true})
 
