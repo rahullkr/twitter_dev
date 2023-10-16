@@ -1,53 +1,60 @@
-class CrudRepository{
-    constructor(model){
-        this.model = model; 
+
+class CrudRepository {
+    constructor(model) {
+        this.model = model;
     }
 
-    async create(data){
+    async create(data) {
         try {
+            console.log(data);
             const result = await this.model.create(data);
-            return result ; 
-        } catch (error) {
-            console.log('something went wrong')
-        }
-    }
-    async destroy(id){
-        try {
-            const result = await this.model.findByIdAndDelete(id); 
             return result;
-
         } catch (error) {
-            console.log('something went wrong')
+            console.log("Something went wrong in crud repo");
+            throw error;
         }
     }
-    async get(id){
+
+    async destroy(id) {
         try {
-            const result = await this.model.findById(id); 
+            const result = await this.model.findByIdAndDelete(id);
             return result;
-
         } catch (error) {
-            console.log('something went wrong')
+            console.log("Something went wrong in crud repo");
+            throw error;
         }
     }
-    async getAll(){
+
+    async get(id) {
         try {
-            const result = await this.model.find({}); 
+            const result = await this.model.findById(id);
             return result;
-
         } catch (error) {
-            console.log('something went wrong')
+            console.log("Something went wrong in crud repo");
+            throw error;
         }
     }
-    async update(id, data){
+
+    async getAll() {
         try {
-            const result = await this.model.findByIdAndUpdate(id, data, {new: true}); 
+            const result = await this.model.find({});
             return result;
-
         } catch (error) {
-            console.log('something went wrong');
-            
+            console.log("Something went wrong in crud repo");
+            throw error;
         }
     }
+
+    async update(id, data) {
+        try {
+            const result = await this.model.findByIdAndUpdate(id, data, {new: true});
+            return result;
+        } catch(error) {
+            console.log("Something went wrong in crud repo");
+            throw error;
+        }
+    }
+
 }
 
-export default CrudRepository; 
+export default CrudRepository;
